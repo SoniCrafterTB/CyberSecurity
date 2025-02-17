@@ -1,0 +1,33 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <math.h>
+
+bool Isprime(int num){
+    bool prime = true; 
+    int end = sqrt(num);
+    for (int i = 2; i <= end; i++)
+    {
+        if (num % i == 0)
+        {
+            prime = false;
+        }
+    }
+}
+int main()
+{
+
+    int num;
+    scanf("%d", &num);
+   
+    if (Isprime(num))
+    {
+        printf("The number is prime!");
+    }
+    else
+    {
+        printf("The number is not prime!");
+    }
+
+    return EXIT_SUCCESS;
+}
