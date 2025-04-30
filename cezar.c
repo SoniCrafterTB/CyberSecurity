@@ -3,16 +3,31 @@
 #include <string.h>
 #define MAXN 1000
 
-char *cezar_cipher(char *text, int key)
+char* cezar_cipher(char* str,int key)
 {
-    int length = strlen(text);
-    char *cipher = (char *)malloc(sizeof(char) * (length + 1));
-    for (int i = 0; i < length; i++)
+ int length=strlen(str);
+ char * cipher = (char*)malloc(sizeof(char) * (length+1));
+ for(int i = 0;i<length;i++)
+ {
+    if(str[i] >= 'a' && str[i] <= 'z')
     {
-        cipher[i] = (text[i] - 'a' + key) % 26 + 'a';
+        cipher[i]=((str[i]-'a')+key)%26 + 'a';
     }
-    cipher[length] = '\0';
-    return cipher;
+    else if(str[i]>= 'A' && str[i] <= 'Z')
+    {
+        cipher[i]=((str[i]-'A')+key)%26 + 'A';
+    }
+    else if(str[i]>= '0' && str[i] <= '9')
+    {
+        cipher[i]=((str[i]-'0')+key)%10 + '0';
+    }
+    else
+    {
+        cipher[i]=str[i];
+    }
+    
+ }
+ return cipher;
 }
 
 int main()
